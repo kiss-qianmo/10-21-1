@@ -48,7 +48,9 @@
         class="min_input"
       ></el-input>
       <el-input placeholder="管理员描述" v-model="admin.des" clearable class="min_input"></el-input>
-      <el-date-picker v-model="admin.time" type="date" placeholder="选择日期" class="min_input"></el-date-picker>
+      <el-date-picker v-model="admin.time" type="date" placeholder="选择日期" class="min_input">
+        <span>{{admin.time = new Date(admin.time).getTime()}}</span>
+      </el-date-picker>
       <div style="margin-top:20px">
         <el-button type="success" plain @click="fn">确定</el-button>
         <el-button type="warning" plain>取消</el-button>

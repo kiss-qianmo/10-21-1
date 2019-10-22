@@ -2,7 +2,7 @@
   <div id="left">
     <el-menu :span="24">
       <el-menu default-active="0" class="el-menu-vertical-demo">
-        <el-menu-item index="1" v-if="isAdmin === 0">
+        <el-menu-item index="1" v-if="isAdmin === '0'">
           <i class="el-icon-s-custom"></i>
           <span slot="title" is="router-link" to="/index/manage/adminManage" active-class="select">管理员管理</span>
         </el-menu-item>
@@ -16,19 +16,19 @@
         </el-menu-item>
         <el-menu-item index="4" v-if="isAdmin == 1">
           <i class="el-icon-ship"></i>
-          <span slot="title" is="router-link" to="/index/manage" active-class="select">banner管理</span>
+          <span slot="title" is="router-link" to="/index/admin/water" active-class="select">水站管理</span>
         </el-menu-item>
         <el-menu-item index="5" v-if="isAdmin == 1">
           <i class="el-icon-setting"></i>
-          <span slot="title" is="router-link" to="/index/manage" active-class="select">banner管理</span>
+          <span slot="title" is="router-link" to="/index/admin/repair" active-class="select">维修管理</span>
         </el-menu-item>
         <el-menu-item index="6" v-if="isAdmin == 1">
           <i class="el-icon-office-building"></i>
-          <span slot="title" is="router-link" to="/index/manage" active-class="select">banner管理</span>
+          <span slot="title" is="router-link" to="/index/admin/home" active-class="select">家政管理</span>
         </el-menu-item>
         <el-menu-item index="7" v-if="isAdmin == 1">
           <i class="el-icon-key"></i>
-          <span slot="title" is="router-link" to="/index/manage" active-class="select">banner管理</span>
+          <span slot="title" is="router-link" to="/index/admin/pass" active-class="select">修改密码</span>
         </el-menu-item>
       </el-menu>
     </el-menu>
@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted(){
-    this.isAdmin = this.$store.state.isAdmin
+    this.isAdmin = sessionStorage.getItem('admin')
     console.log(this.isAdmin);
     
   }

@@ -50,9 +50,6 @@ export default {
     };
   },
   methods: {
-    open(e) {
-      this.$message(e);
-    },
     login() {
       this.$axios({
         url: api.login,
@@ -61,10 +58,11 @@ export default {
       })
         .then(res => {
           if (res.data.isok) {
-            this.$store.dispatch("adminLogin", res.data.type);
+            // this.$store.dispatch("adminLogin", res.data.type);
+            sessionStorage.setItem('admin',res.data.type)
             this.$router.replace("/index");
           } else {
-            this.open(res.data.info);
+            this.$message.error(res.data.info);
           }
         })
         .catch(err => {
